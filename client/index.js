@@ -77,7 +77,7 @@
 		    $("input[name$='author']").val('');
 	}});
 
-	Template.books.events({
+	Template.user_books.events({
 		'click .remove_book' : function() {
 			if(Meteor.user()._id == this.user) {
 				Books.remove(this._id);
@@ -151,4 +151,20 @@
 		}
 
   		return month_books_object;
+	}
+
+	Template.user_reading_list.mylist = function() {
+		var mylist = 'TRUE';
+		// If the current logged user as the same id as the reading list user
+		if(Session.get("user")._id == Meteor.user()._id) {
+			return mylist;
+		}
+	}
+
+	Template.user_books.mylist = function() {
+		var mylist = 'TRUE';
+		// If the current logged user as the same id as the reading list user
+		if(Session.get("user")._id == Meteor.user()._id) {
+			return mylist;
+		}
 	}

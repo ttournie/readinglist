@@ -18,14 +18,6 @@
 	{{{yield}}}
 </template>
 
-<template name="body">
-		{{#if currentUser}}
-			{{> reading_list_add}}
-			{{> reading_list}}
-		{{else}}
-			{{> landing_page}}
-		{{/if}}
-</template>
 
 <template name="index">
 	{{> body}}
@@ -35,42 +27,6 @@
 	<div class="landing_page">
 		<h1 class="reading-list landing-page">Welcome book lover.</h1>
 	</div>
-</template>
-
-<template name="reading_list_add">
-	<h1 class="reading-list"> {{user}}'s reading list</h1>
-	<div class="container-reading-list-add">
-		<form id="add-book">
-		    <input type="text" name="title" placeholder="Title"/>
-		    <input type="text" name="author" placeholder="Author"/>
-		    <button type="submit" class="btn btn-info" id="submit"> + </button>
-		</form>
-	</div>
-</template>
-
-<template name="reading_list">
-	<div class="container-reading-list">
-
-	    	{{#each month}}
-	    		<div class="books-heading">
-		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
-	      		</div>
-	      		<ul class="month-books unstyled">
-	      			{{#each books}}
-	      				{{> books}}
-	    			{{/each}}
-	    		</ul>
-	    		<hr></hr>
-	    	{{/each}}
-	</div>
-</template>
-
-<template name="books">
-  <div class="books">
-    <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
-    	<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>
-    </li>
-  </div>
 </template>
 
 <template name="user_info">
@@ -126,6 +82,9 @@
 </template>
 
 <template name="user_reading_list">
+	{{#if mylist}}
+		{{> reading_list_add}}
+	{{/if}}
 	<div class="container-reading-list">
 	    	{{#each month}}
 	    		<div class="books-heading">
@@ -146,6 +105,9 @@
   <div class="books">
     <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
     </li>
+    {{#if mylist}}
+		<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>
+	{{/if}}
   </div>
 </template>
 
