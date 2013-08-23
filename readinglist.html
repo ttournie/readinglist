@@ -29,6 +29,41 @@
 	</div>
 </template>
 
+<template name="reading_list_add">
+	<div class="container-reading-list-add">
+		<form id="add-book">
+		    <input type="text" name="title" placeholder="Title"/>
+		    <input type="text" name="author" placeholder="Author"/>
+		    <button type="submit" class="btn btn-info" id="submit"> + </button>
+		</form>
+	</div>
+</template>
+
+<template name="reading_list">
+	<div class="container-reading-list">
+
+	    	{{#each month}}
+	    		<div class="books-heading">
+		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
+	      		</div>
+	      		<ul class="month-books unstyled">
+	      			{{#each books}}
+	      				{{> books}}
+	    			{{/each}}
+	    		</ul>
+	    		<hr></hr>
+	    	{{/each}}
+	</div>
+</template>
+
+<template name="books">
+  <div class="books">
+    <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
+    	<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>
+    </li>
+  </div>
+</template>
+
 <template name="user_info">
 	<ul class="nav pull-right">
 		{{#if currentUser}}
