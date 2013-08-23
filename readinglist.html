@@ -1,0 +1,106 @@
+<head>
+  <title>readinglist</title>
+</head>
+
+<body>
+{{> header}}
+{{> body}}
+</body>
+
+<template name="header">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="nav pull-right">
+					{{> user_info}}
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="body">
+		{{#if currentUser}}
+			{{> reading_list_add}}
+			{{> reading_list}}
+		{{else}}
+			{{> landing_page}}
+		{{/if}}
+</template>
+
+<template name="landing_page">
+	<div class="landing_page">
+		<h1 class="reading-list landing-page">Welcome book lover.</h1>
+	</div>
+</template>
+
+<template name="reading_list_add">
+	<h1 class="reading-list"> {{user}}'s reading list</h1>
+	<div class="container-reading-list-add">
+		<form id="add-book">
+		    <input type="text" name="title" placeholder="Title"/>
+		    <input type="text" name="author" placeholder="Author"/>
+		    <button type="submit" class="btn btn-info" id="submit"> + </button>
+		</form>
+	</div>
+</template>
+
+<template name="reading_list">
+	<div class="container-reading-list">
+			
+	    	{{#each month}}
+	    		<div class="books-heading">
+		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
+	      		</div>
+	      		<ul class="month-books unstyled">
+	      			{{#each books}}
+	      				{{> books}}
+	    			{{/each}}
+	    		</ul>
+	    		<hr></hr>
+	    	{{/each}}
+	</div>
+</template>
+
+<template name="books">
+  <div class="books">
+    <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
+    	<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>
+    </li>
+  </div>
+</template>
+
+<template name="user_info">
+	<ul class="nav pull-right">
+		{{#if currentUser}}
+			{{> user_loggedin}}
+		{{else}}
+			{{> user_loggedout}}
+		{{/if}}
+	</ul>
+</template>
+
+<template name="user_loggedin">
+	{{#if loggingIn}}
+		<li>Logging in...</li>
+	{{else}}
+		<li>
+			<img class="img-rounded" src="{{currentUser.profile.avatard_url}}"/>
+		</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			{{user}}
+			<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a id="logout">Logout</a></li>
+			</ul>
+		</li>
+	{{/if}}
+</template>
+
+<template name="user_loggedout">
+	<li>{{loginButtons align="right"}}</li>
+</template>
+
+
