@@ -3,11 +3,9 @@
 </head>
 
 <body>
-{{> header}}
-{{> body}}
 </body>
 
-<template name="header">
+<template name="layout">
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
@@ -17,6 +15,7 @@
 			</div>
 		</div>
 	</div>
+	{{{yield}}}
 </template>
 
 <template name="body">
@@ -26,6 +25,10 @@
 		{{else}}
 			{{> landing_page}}
 		{{/if}}
+</template>
+
+<template name="index">
+	{{> body}}
 </template>
 
 <template name="landing_page">
@@ -47,7 +50,7 @@
 
 <template name="reading_list">
 	<div class="container-reading-list">
-			
+
 	    	{{#each month}}
 	    		<div class="books-heading">
 		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
@@ -103,4 +106,46 @@
 	<li>{{loginButtons align="right"}}</li>
 </template>
 
+<template name="user_list">
+	{{#each users}}
+	     {{> user}}
+	{{/each}}
+</template>
+
+<template name="user">
+  <div class="user">
+    <a href="/users/{{_id}}" class="users-link">{{username}}</a>
+  </div>
+</template>
+
+<template name="user_show_reading_list">
+  {{#with user}}
+  <h1 class="reading-list"> {{username}}'s reading list</h1>
+  {{> user_reading_list}}
+  {{/with}}
+</template>
+
+<template name="user_reading_list">
+	<div class="container-reading-list">
+	    	{{#each month}}
+	    		<div class="books-heading">
+		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
+	      		</div>
+	      		<ul class="month-books unstyled">
+	      			{{#each books}}
+	      				{{> user_books}}
+	    			{{/each}}
+	    		</ul>
+	    		<hr></hr>
+	    	{{/each}}
+	    	<a href="/users" class="users-link"> Users list</a>
+	</div>
+</template>
+
+<template name="user_books">
+  <div class="books">
+    <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
+    </li>
+  </div>
+</template>
 

@@ -1,5 +1,41 @@
+	 Hooks.init();
+
 	Books = new Meteor.Collection("books");
 	Months = new Meteor.Collection("months");
+
+	Meteor.subscribe("months", [], function () {
+	  console.log("[subscription complete]");
+	});
+
+	Meteor.subscribe("books", [], function () {
+	  console.log("[subscription complete 2 ]");
+	});
+
+	Meteor.subscribe("allUsers", [], function () {
+	  console.log("[subscription complete 3 ]");
+	});
+
+	function setUser(context, page) {
+		var _id = context.params._id;
+		Session.set("user", Meteor.users.findOne(_id));
+	}
+
+	Meteor.pages({
+	    '/': { to: 'index' },
+	    '/users': { to: 'user_list' },
+	    '/users/:_id': { to: 'user_show_reading_list', before: setUser },
+  	});
+
+  	Template.user_show_reading_list.helpers({
+  		user: function() {
+  			return Session.get("user");
+  		}
+  	});
+
+	Hooks.onLoggedIn = function () {
+		Meteor.user()._id
+		Meteor.Router.to('/users/' + Meteor.user()._id);
+	};
 
 	Template.user_loggedout.events({
 	    'click #login' : function (e, tmpl) {
@@ -36,7 +72,6 @@
 			// Testing if the title is not empty befor updating the database
 			if(title != '') {
 				Books.insert({user: Meteor.user()._id, name: title, author: author, day: fullDate.getDate(), month: twoDigitMonth, year: fullDate.getFullYear()});
-				//Books.insert({user: Meteor.user()._id, name: title, author: author, day: fullDate.getDate(), month: "06", year: fullDate.getFullYear()});
 			}
 			$("input[name$='title']").val('');
 		    $("input[name$='author']").val('');
@@ -53,6 +88,11 @@
   		return Meteor.user().username;
 	}
 
+	Template.user_list.users = function() {
+		console.log('test');
+  		return Meteor.users.find();
+	}
+
 	Template.reading_list_add.user = function() {
   		return Meteor.user().username;
 	}
@@ -64,11 +104,9 @@
 		var month = new Array();
 		var month_year = new Array();
 		books.forEach(function(book) {
-			console.log(book.year);
 			month_year[i] = book.month + '/' + book.year;
-			i++;	
+			i++;
 		});
-		console.log(month_year);
 		var month_year=month_year.filter(function(itm,i,a){
     		return i==a.indexOf(itm);
 		});
@@ -76,10 +114,39 @@
 
 		// For each month/year create an object with all the books of this month/year
 		for(i=0; i<month_year.length; i++) {
-			var split_date = month_year[i].split("/");	
+			var split_date = month_year[i].split("/");
 			var month_book = Books.find({user: Meteor.user()._id , month: split_date[0], year: parseInt(split_date[1])}, {day: -1, year: -1, month: -1}).fetch();
 			var month_string = Months.findOne({number: split_date[0]});
 			var nb_book = Books.find({user: Meteor.user()._id , month: split_date[0], year: parseInt(split_date[1])}, {day: -1, year: -1, month: -1}).count();
+			month_books_object[i] = {mois : month_string.name, count: nb_book , books: month_book};
+		}
+
+  		return month_books_object;
+	}
+
+	Template.user_reading_list.month = function() {
+		var user = Session.get("user");
+		var _id = user._id;
+		// Get all the month and year of user's books
+		var books = Books.find({user: _id }, {sort: {year: -1, month: -1}});
+		var i = 0
+		var month = new Array();
+		var month_year = new Array();
+		books.forEach(function(book) {
+			month_year[i] = book.month + '/' + book.year;
+			i++;
+		});
+		var month_year=month_year.filter(function(itm,i,a){
+    		return i==a.indexOf(itm);
+		});
+		var month_books_object = new Array()
+
+		// For each month/year create an object with all the books of this month/year
+		for(i=0; i<month_year.length; i++) {
+			var split_date = month_year[i].split("/");
+			var month_book = Books.find({user: _id , month: split_date[0], year: parseInt(split_date[1])}, {day: -1, year: -1, month: -1}).fetch();
+			var month_string = Months.findOne({number: split_date[0]});
+			var nb_book = Books.find({user: _id , month: split_date[0], year: parseInt(split_date[1])}, {day: -1, year: -1, month: -1}).count();
 			month_books_object[i] = {mois : month_string.name, count: nb_book , books: month_book};
 		}
 

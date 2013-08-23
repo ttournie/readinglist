@@ -36,3 +36,15 @@ Meteor.startup(function () {
   	}
   }
 });
+
+Meteor.publish("months", function () {
+    return Months.find();
+  });
+
+Meteor.publish("books", function () {
+    return Books.find();
+  });
+
+Meteor.publish("allUsers", function () {
+  return Meteor.users.find({});
+});
