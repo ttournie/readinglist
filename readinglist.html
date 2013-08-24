@@ -20,7 +20,7 @@
 
 
 <template name="index">
-	{{> body}}
+	{{> landing_page}}
 </template>
 
 <template name="landing_page">
@@ -98,15 +98,20 @@
 </template>
 
 <template name="user_list">
-	{{#each users}}
-	     {{> user}}
-	{{/each}}
+	<h1 class="user-list"> Books lovers</h1>
+	<div class="container-users-list">
+		<ul class="users-list unstyled">
+			{{#each users}}
+		  	   {{> user}}
+			{{/each}}
+		</ul>
+	</div>
 </template>
 
 <template name="user">
-  <div class="user">
+  <li class="user unstyled">
     <a href="/users/{{_id}}" class="users-link">{{username}}</a>
-  </div>
+  </li>
 </template>
 
 <template name="user_show_reading_list">
