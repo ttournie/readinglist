@@ -43,6 +43,10 @@ ul.nav-tabs > li.active-signin > a {
 	vertical-align: top;
 }
 
+.navbar-inner div.container {
+	margin-bottom: 10px;
+}
+
 .remove_book {
 	float: right;
 }

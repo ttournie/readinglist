@@ -32,6 +32,11 @@
 
   	// Redirectiong Hook on loggin
 	Hooks.onLoggedIn = function () {
+		if(Meteor.user().services.twitter) {
+			var twitterInfo =  Meteor.user().services.twitter;
+			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"username":twitterInfo.screenName}});
+			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"avatar":twitterInfo.profile_image_url}});
+		}
 		Meteor.user()._id
 		Meteor.Router.to('/users/' + Meteor.user()._id);
 	};
@@ -99,12 +104,17 @@
 	}
 
 	Template.user_list.users = function() {
-		console.log('test');
   		return Meteor.users.find();
 	}
 
 	Template.reading_list_add.user = function() {
   		return Meteor.user().username;
+	}
+
+	Template.user_loggedin.avatar = function() {
+		if( Meteor.user().avatar) {
+  			return Meteor.user().avatar;
+  		}
 	}
 
 	// Retrieving all the user book and sorting them by month
@@ -140,17 +150,21 @@
 	// Return true if the user in session is the logged user
 	Template.user_reading_list.mylist = function() {
 		var mylist = 'TRUE';
-		// If the current logged user as the same id as the reading list user
-		if(Session.get("user")._id == Meteor.user()._id) {
-			return mylist;
+		if(Meteor.user()) {
+			// If the current logged user as the same id as the reading list user
+			if(Session.get("user")._id == Meteor.user()._id) {
+				return mylist;
+			}
 		}
 	}
 
 	// Return true if the user in session is the logged user
 	Template.user_books.mylist = function() {
 		var mylist = 'TRUE';
-		// If the current logged user as the same id as the reading list user
-		if(Session.get("user")._id == Meteor.user()._id) {
-			return mylist;
+		if(Meteor.user()) {
+			// If the current logged user as the same id as the reading list user
+			if(Session.get("user")._id == Meteor.user()._id) {
+				return mylist;
+			}
 		}
 	}
