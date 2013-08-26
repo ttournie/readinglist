@@ -4,46 +4,49 @@
 
 	// Month
 	Meteor.subscribe("months", [], function () {
-	  console.log("[subscription complete]");
 	});
 
 	// Books
 	Meteor.subscribe("books", [], function () {
-	  console.log("[subscription complete 2 ]");
 	});
 
 	// All users
 	Meteor.subscribe("allUsers", [], function () {
-	  console.log("[subscription complete 3 ]");
 	});
 
 	// Set the user in session
 	function setUser(context, page) {
-		var _id = context.params._id;
-		Session.set("user", Meteor.users.findOne(_id));
+		var safename = context.params.safename;
+		Session.set("user", Meteor.users.findOne({'safename' : safename}));
 	}
 
 	// Routing
 	Meteor.pages({
 	    '/': { to: 'index' },
 	    '/users': { to: 'user_list' },
-	    '/users/:_id': { to: 'user_show_reading_list', before: setUser },
+	    '/users/:safename': { to: 'user_show_reading_list', before: setUser },
   	});
 
   	// Redirectiong Hook on loggin
 	Hooks.onLoggedIn = function () {
 		if(Meteor.user().services.twitter) {
 			var twitterInfo =  Meteor.user().services.twitter;
+			if(!Meteor.user().safename) {
+				Meteor.users.update({ _id:Meteor.userId() }, {$set :{"safename":twitterInfo.screenName}});
+			}
 			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"username":twitterInfo.screenName}});
 			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"avatar":twitterInfo.profile_image_url}});
 		}
 		if(Meteor.user().services.facebook) {
 			var facebookInfo =  Meteor.user().services.facebook;
+			if(!Meteor.user().safename) {
+				Meteor.users.update({ _id:Meteor.userId() }, {$set :{"safename":facebookInfo.username}});
+			}
 			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"username":facebookInfo.name}});
 			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"avatar":"http://graph.facebook.com/" + facebookInfo.id + "/picture/?type=square"}});
 		}
 		Meteor.user()._id
-		Meteor.Router.to('/users/' + Meteor.user()._id);
+		Meteor.Router.to('/users/' + Meteor.user().safename);
 	};
 
 	// Get the user in session
@@ -105,7 +108,7 @@
 	}});
 
 	Template.user_loggedin.user = function() {
-  		return Meteor.user().username;
+  		return Meteor.user();
 	}
 
 	Template.user_list.users = function() {
