@@ -1,6 +1,7 @@
 body {
 	padding-bottom: 40px;
 	background-color: #f5f5f5;
+	background: #dadbdb url('/bkg_scratches.jpg');
 }
 
 h1.reading-list, h1.user-list {
@@ -29,6 +30,10 @@ h1.reading-list, h1.user-list {
 	padding-bottom: 20px;
 }
 
+.container-reading-list {
+	padding-bottom: 20px;
+}
+
 ul.nav-tabs > li.active-signin > a {
 	border: 1px solid #e5e5e5;
 	border-left: none;
@@ -40,8 +45,8 @@ ul.nav-tabs > li.active-signin > a {
 }
 
 img.avatar {
-	height: 48px;
-	width: 48px;
+	height: 38px;
+	width: 38px;
 }
 
 .container-reading-list-add .btn-info {
@@ -49,7 +54,12 @@ img.avatar {
 }
 
 .navbar-inner div.container {
-	margin-bottom: 10px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+
+.login-link-and-dropdown-list {
+	margin-top: 9px;
 }
 
 .remove_book {
@@ -86,8 +96,8 @@ h1.landing-page {
 	margin-top: 250px;
 }
 
-.navbar-inner div.container {
-	margin-top: 10px;
+#login-buttons a{
+	text-decoration: none;
 }
 
 a.login-link-text {
