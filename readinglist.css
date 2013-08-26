@@ -74,6 +74,18 @@ img.avatar {
 	font-weight: 100;
 }
 
+.landing-page {
+	margin: 0 auto;
+	width: 659px;
+}
+
+h1.landing-page {
+	font-size: 45px;
+	font-weight: 200;
+	margin-bottom: 20px;
+	margin-top: 250px;
+}
+
 .navbar-inner div.container {
 	margin-top: 10px;
 }
