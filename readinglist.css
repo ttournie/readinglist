@@ -39,6 +39,11 @@ ul.nav-tabs > li.active-signin > a {
 	border-radius: 5px 0px 0px 0px;;
 }
 
+img.avatar {
+	height: 48px;
+	width: 48px;
+}
+
 .container-reading-list-add .btn-info {
 	vertical-align: top;
 }

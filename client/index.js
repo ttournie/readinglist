@@ -37,6 +37,11 @@
 			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"username":twitterInfo.screenName}});
 			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"avatar":twitterInfo.profile_image_url}});
 		}
+		if(Meteor.user().services.facebook) {
+			var facebookInfo =  Meteor.user().services.facebook;
+			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"username":facebookInfo.name}});
+			Meteor.users.update({ _id:Meteor.userId() }, {$set :{"avatar":"http://graph.facebook.com/" + facebookInfo.id + "/picture/?type=square"}});
+		}
 		Meteor.user()._id
 		Meteor.Router.to('/users/' + Meteor.user()._id);
 	};
