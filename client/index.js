@@ -49,6 +49,10 @@
 		Meteor.Router.to('/users/' + Meteor.user().safename);
 	};
 
+	Template.reading_list_add.rendered = function() {
+    $('#datepicker').datepicker();
+	};
+
 	// Get the user in session
   	Template.user_show_reading_list.helpers({
   		user: function() {
