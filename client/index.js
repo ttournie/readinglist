@@ -50,7 +50,7 @@
 	};
 
 	Template.reading_list_add.rendered = function() {
-    $('#datepicker').datepicker();
+    $('.datepicker').datepicker();
 	};
 
 	// Get the user in session

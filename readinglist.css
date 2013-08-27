@@ -12,7 +12,7 @@ h1.reading-list, h1.user-list {
 }
 
 .container-reading-list, .container-reading-list-add, .container-users-list {
-	max-width: 500px;
+	max-width: 657px;
 	margin: 0 auto 20px;
 	background-color: #fff;
 	border: 1px solid #e5e5e5;
