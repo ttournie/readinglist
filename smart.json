@@ -2,6 +2,7 @@
   "packages": {
     "mini-pages": {},
     "event-hooks": {},
-    "router": {}
+    "router": {},
+    "jquery-ui": {}
   }
 }
