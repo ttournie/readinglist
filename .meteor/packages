@@ -14,4 +14,4 @@ standard-app-packages
 mini-pages
 event-hooks
 router
-bootstrap-datepicker
+jquery-ui

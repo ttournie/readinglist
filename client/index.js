@@ -50,7 +50,7 @@
 	};
 
 	Template.reading_list_add.rendered = function() {
-    $('.datepicker').datepicker();
+    	$('.datepicker').datepicker({ dateFormat: "dd/mm/yy" });
 	};
 
 	// Get the user in session
@@ -91,16 +91,28 @@
 		    event.preventDefault();
 		    var title = $("input[name$='title']").val();
 		    var author = $("input[name$='author']").val();
-		    // Get the current date
-		    var fullDate = new Date();
-		    var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
-			var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+		    var date = $("input[name$='date']").val();
+		    if(date != '') {
+		    	var date_split = date.split("/");
+		    	var day = parseInt(date_split[0]);
+		    	var month = date_split[1];
+		    	var year = parseInt(date_split[2]);
+		    } else {
+		    	// Get the current date
+		    	var fullDate = new Date();
+		    	var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+				var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+				var day = fullDate.getDate();
+				var month = twoDigitMonth;
+		    	var year = fullDate.getFullYear();
+		    }
 			// Testing if the title is not empty befor updating the database
 			if(title != '') {
-				Books.insert({user: Meteor.user()._id, name: title, author: author, day: fullDate.getDate(), month: twoDigitMonth, year: fullDate.getFullYear()});
+				Books.insert({user: Meteor.user()._id, name: title, author: author, day: day, month: month, year: year});
 			}
 			$("input[name$='title']").val('');
 		    $("input[name$='author']").val('');
+		    $("input[name$='date']").val('');
 	}});
 
 	// Removing a book from user reading list
