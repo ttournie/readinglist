@@ -3,6 +3,7 @@
     "mini-pages": {},
     "event-hooks": {},
     "router": {},
-    "jquery-ui": {}
+    "jquery-ui": {},
+    "bootstrap-datepicker": {}
   }
 }
