@@ -34,5 +34,6 @@ Accounts.onCreateUser(function (options, user) {
 	var safename = no_accent(user.username);
 	safename = safename.replace(/ /g, '.');
 	user.safename = safename;
+	user.avatar = '../profile50.jpg';
 	return user;
 });
