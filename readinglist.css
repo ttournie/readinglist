@@ -4,11 +4,26 @@ body {
 	background: #dadbdb url('/bkg_scratches.jpg');
 }
 
-h1.reading-list, h1.user-list {
+.container-header {
+	max-width: 719px;
+	margin: 0 auto;
+}
+
+h1.user-list {
+	text-align: center;
+	font-size: 29px;
+	font-weight: 200;
+	margin-bottom: 0px;
+	margin-top: 122px;
+	background-color: #0088cc;
+	color: #ffffff;
+}
+
+h1.reading-list {
 	text-align: center;
 	font-size: 45px;
 	font-weight: 200;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	margin-top: 35px;
 }
 
