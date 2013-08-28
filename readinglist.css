@@ -9,6 +9,7 @@ h1.reading-list, h1.user-list {
 	font-size: 45px;
 	font-weight: 200;
 	margin-bottom: 20px;
+	margin-top: 35px;
 }
 
 .container-reading-list, .container-reading-list-add, .container-users-list {
@@ -22,12 +23,12 @@ h1.reading-list, h1.user-list {
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	padding : 28px 10px 0px 10px;
+	padding : 28px 30px 0px 30px;
 }
 
 .container-users-list {
 	overflow: hidden;
-	padding-bottom: 20px;
+	padding-bottom: 60px;
 }
 
 .container-reading-list {
@@ -95,6 +96,10 @@ h1.landing-page {
 	margin-bottom: 20px;
 	margin-top: 250px;
 }
+h3.no-books {
+	font-weight: 100;
+	color: #2EB8E6;
+}
 
 #login-buttons a{
 	text-decoration: none;
@@ -120,28 +125,16 @@ ul.users-list {
 
 ul.users-list li {
 	float: left;
-	width: 279px;
+	width: 321px;
 	font-size: 14px;
 	font-weight: 200;
 	line-height: 50px;
-	margin-right: 25px;
 }
 
 ul.users-list li a {
 	text-decoration: none;
 }
 
-*,
-*:after,
-*::before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body {
-	font-family: 'Raleway', sans-serif;
-}
 
 nav a {
 	position: relative;
@@ -153,7 +146,16 @@ nav a {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	text-shadow: 0 0 1px rgba(255,255,255,0.3);
-	width: 279px;
+	width: 321px;
+}
+
+.navbar-inner {
+	padding-top: 2px;
+}
+
+div.alert-info {
+	padding-right: 8px;
+	width: 90px;
 }
 
 nav a:hover,

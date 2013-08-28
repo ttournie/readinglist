@@ -6,13 +6,11 @@
 </body>
 
 <template name="layout">
-	<div class="navbar">
+	<div class="navbar navbar-static-top">
 		<div class="navbar-inner">
-			<div class="container">
 				<div class="nav pull-right">
 					{{> user_info}}
 				</div>
-			</div>
 		</div>
 	</div>
 	{{{yield}}}
@@ -134,6 +132,7 @@
 		{{> reading_list_add}}
 	{{/if}}
 	<div class="container-reading-list">
+		{{#if month}}
 	    	{{#each month}}
 	    		<div class="books-heading">
 		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
@@ -145,7 +144,15 @@
 	    		</ul>
 	    		<hr></hr>
 	    	{{/each}}
-	    	<a href="/users" class="users-link"> Users list</a>
+	    {{else}}
+	    	<h3 class="no-books">No books in this reading list yet...</h3>
+	    	<hr></hr>
+	    {{/if}}
+	    	<a href="/users" class="users-link">
+		    	<div class="alert alert-info">
+		    		 Users list
+		    	</div>
+	    	</a>
 	</div>
 </template>
 
