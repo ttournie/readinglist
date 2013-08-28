@@ -209,3 +209,33 @@ nav a:focus {
 	opacity: 1;
 }
 
+/*  Custome Datepicker */
+.ui-datepicker {
+	line-height: 1;
+	width: 13em;
+}
+
+.ui-widget .ui-widget-header{
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 20px;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+.ui-widget-content .ui-state-hover, .ui-widget-content .ui-state-focus {
+	background-color: #3a87ad;
+}
+
+.ui-datepicker-month, .ui-datepicker-year {
+	color: #3a87ad;
+}
+
+.ui-widget {
+	font-family: inherit;
+}
