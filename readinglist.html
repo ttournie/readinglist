@@ -159,7 +159,7 @@
 
 <template name="user_books">
   <div class="books">
-    <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
+    <li class="title">{{name}}{{#if author}} - by <span class="author">{{author}}</span>{{/if}}
     </li>
     {{#if mylist}}
 		<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>

@@ -101,6 +101,11 @@ h3.no-books {
 	color: #2EB8E6;
 }
 
+.author {
+	font-style: italic;
+	color: #3a87ad;
+}
+
 #login-buttons a{
 	text-decoration: none;
 }
