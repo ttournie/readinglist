@@ -115,17 +115,19 @@
 	    		<div class="books-heading">
 		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
 	      		</div>
-	      		<ul class="month-books unstyled">
-	      			{{#each books}}
-	      				{{> user_books}}
-	    			{{/each}}
-	    		</ul>
-	    		<hr></hr>
+	      		<div class="books-content">
+		      		<ul class="month-books unstyled">
+		      			{{#each books}}
+		      				{{> user_books}}
+		    			{{/each}}
+		    		</ul>
+	    		</div>
 	    	{{/each}}
 	    {{else}}
 	    	<h3 class="no-books">No books in this reading list yet...</h3>
-	    	<hr></hr>
 	    {{/if}}
+	    <hr></hr>
+	    <div class="user-list-link"><a href="/users">User list</a></div>
 	</div>
 </template>
 
