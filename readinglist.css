@@ -1,8 +1,20 @@
 body {
 	padding-bottom: 40px;
 	background-color: #f5f5f5;
-	background: #dadbdb url('/DSC01676.jpg');
-	background-size: 1280px 1024px;
+}
+
+.body-landing-page {
+	position: absolute;
+    top: 41px; right: 0; bottom: 0; left: 0;
+	padding-bottom: 40px;
+	background-color: #f5f5f5;
+	background: url('/DSC01676.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	height:100%;
+    width:100%;
 }
 
 .container-header {
@@ -103,15 +115,26 @@ img.avatar {
 
 .landing-page {
 	margin: 0 auto;
-	width: 659px;
+	margin-left: 257px;
 }
 
 h1.landing-page {
-	font-size: 45px;
+	font-size: 70px;
 	font-weight: 200;
 	margin-bottom: 20px;
-	margin-top: 250px;
+	margin-top: 315px;
+	margin-left: 0px;
+	color: #ffffff;
 }
+
+blockquote p {
+	color: #ffc200;
+}
+
+blockquote small {
+	color: #ffffff;
+}
+
 h3.no-books {
 	font-weight: 100;
 	color: #2EB8E6;
