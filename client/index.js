@@ -49,6 +49,10 @@
 		Meteor.Router.to('/users/' + Meteor.user().safename);
 	};
 
+	Hooks.onLoggedOut = function () {
+		Meteor.Router.to('/');
+	}
+
 	Template.reading_list_add.rendered = function() {
     	$('.datepicker').datepicker({ dateFormat: "dd/mm/yy" });
 	};

@@ -1,6 +1,12 @@
 body {
 	padding-bottom: 40px;
 	background-color: #f5f5f5;
+	background: url('/DSC01676-blur.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	color: #ffffff;
 }
 
 .body-landing-page {
@@ -13,8 +19,6 @@ body {
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
-  	height:100%;
-    width:100%;
 }
 
 .container-header {
@@ -38,25 +42,26 @@ h1.reading-list {
 	font-weight: 200;
 	margin-bottom: 30px;
 	margin-top: 35px;
+	color: #ffffff;
 }
 
 .container-reading-list, .container-reading-list-add, .container-users-list {
 	max-width: 657px;
 	margin: 0 auto 20px;
-	background-color: #fff;
-	border: 1px solid #e5e5e5;
+	background-color: rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	padding : 28px 30px 0px 30px;
+	padding : 28px 30px 7px 30px;
 }
 
 .container-users-list {
 	overflow: hidden;
 	padding-bottom: 60px;
+	margin-top: 200px;
 }
 
 .container-reading-list {
@@ -116,6 +121,7 @@ img.avatar {
 .landing-page {
 	margin: 0 auto;
 	margin-left: 257px;
+	position: relative;
 }
 
 h1.landing-page {
@@ -137,12 +143,24 @@ blockquote small {
 
 h3.no-books {
 	font-weight: 100;
-	color: #2EB8E6;
+	color: #ffc200;
+}
+hr {
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #4D4D4D;
+	margin-right: 150px;
+	margin-left: 150px;
+}
+
+.user-list-button {
+	position: absolute;
+	top: 98px;
+	left: 559px;
 }
 
 .author {
 	font-style: italic;
-	color: #3a87ad;
+	color: #ffc200;
 }
 
 #login-buttons a{
@@ -160,7 +178,7 @@ a.login-link-text {
 }
 
 h2.month {
-	color: #2EB8E6;
+	color: #49afcd;
 }
 
 ul.users-list {
@@ -198,8 +216,16 @@ nav a {
 }
 
 div.alert-info {
-	padding-right: 8px;
-	width: 90px;
+	padding-right: 0px;
+	width: 79px;
+}
+
+#logout {
+	cursor: pointer;
+}
+
+.login-link-and-dropdown-list a {
+	color: #ffffff;
 }
 
 nav a:hover,
@@ -210,7 +236,7 @@ nav a:focus {
 
 /* Effect 7: second border slides up */
 .cl-effect-7 a {
-	color: #0088cc;
+	color: #ffffff;
 	text-shadow: none;
 }
 
@@ -221,7 +247,7 @@ nav a:focus {
 	left: 0;
 	width: 85%;
 	height: 1px;
-	background: #566473;
+	background: #797979;
 	content: '';
 	-webkit-transition: -webkit-transform 0.3s;
 	-moz-transition: -moz-transform 0.3s;

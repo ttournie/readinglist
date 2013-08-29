@@ -6,7 +6,7 @@
 </body>
 
 <template name="layout">
-	<div class="navbar navbar-static-top">
+	<div class="navbar navbar-static-top navbar-inverse">
 		<div class="navbar-inner">
 				<div class="nav pull-right">
 					{{> user_info}}
@@ -29,6 +29,7 @@
 				<p>“There are worse crimes than burning books. One of them is not reading them.”</p>
 				<small>Joseph Brodsky</small>
 			</blockquote>
+			<a href="/users"><button class="btn btn-small user-list-button" type="button">Book lovers</button></a>
 		</div>
 	</div>
 </template>
@@ -42,31 +43,6 @@
 		    <button type="submit" class="btn btn-info" id="submit"> + </button>
 		</form>
 	</div>
-</template>
-
-<template name="reading_list">
-	<div class="container-reading-list">
-
-	    	{{#each month}}
-	    		<div class="books-heading">
-		      		<h2 class="month">{{mois}} - {{count}} Books</h2>
-	      		</div>
-	      		<ul class="month-books unstyled">
-	      			{{#each books}}
-	      				{{> books}}
-	    			{{/each}}
-	    		</ul>
-	    		<hr></hr>
-	    	{{/each}}
-	</div>
-</template>
-
-<template name="books">
-  <div class="books">
-    <li class="title">{{name}}{{#if author}} By {{author}}{{/if}}
-    	<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>
-    </li>
-  </div>
 </template>
 
 <template name="user_info">
@@ -105,9 +81,6 @@
 </template>
 
 <template name="user_list">
-	<div class="container-header">
-		<h1 class="user-list"> Books lovers</h1>
-	</div>
 	<div class="container-users-list">
 		<ul class="users-list unstyled">
 			<nav class="cl-effect-7">
@@ -153,21 +126,17 @@
 	    	<h3 class="no-books">No books in this reading list yet...</h3>
 	    	<hr></hr>
 	    {{/if}}
-	    	<a href="/users" class="users-link">
-		    	<div class="alert alert-info">
-		    		 Users list
-		    	</div>
-	    	</a>
 	</div>
 </template>
 
 <template name="user_books">
   <div class="books">
     <li class="title">{{name}}{{#if author}} - by <span class="author">{{author}}</span>{{/if}}
-    </li>
+
     {{#if mylist}}
 		<a href='#' id="{{_id}}" class="remove_book"><i class="icon-remove"></i></a>
 	{{/if}}
+	</li>
   </div>
 </template>
 
