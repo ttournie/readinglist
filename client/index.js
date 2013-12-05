@@ -104,7 +104,7 @@
 		    } else {
 		    	// Get the current date
 		    	var fullDate = new Date();
-		    	var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+		    	var twoDigitMonth = ((fullDate.getMonth()+1) <= 9)? '0' + (fullDate.getMonth()+1) : '' + (fullDate.getMonth()+1);
 				var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
 				var day = fullDate.getDate();
 				var month = twoDigitMonth;

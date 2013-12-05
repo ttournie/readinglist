@@ -5,3 +5,10 @@ event-hooks
 router
 jquery-ui
 bootstrap-datepicker
+/mini-pages
+/event-hooks
+/router
+/jquery-ui
+/bootstrap-datepicker
+/HTML5-History-API
+/page-js-ie-support
