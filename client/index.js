@@ -169,7 +169,7 @@
 			var month_book = Books.find({user: _id , month: split_date[0], year: parseInt(split_date[1])}, {day: -1, year: -1, month: -1}).fetch();
 			var month_string = Months.findOne({number: split_date[0]});
 			var nb_book = Books.find({user: _id , month: split_date[0], year: parseInt(split_date[1])}, {day: -1, year: -1, month: -1}).count();
-			month_books_object[i] = {mois : month_string.name, count: nb_book , books: month_book};
+			month_books_object[i] = {year: split_date[1], mois : month_string.name, count: nb_book , books: month_book};
 		}
 
   		return month_books_object;
